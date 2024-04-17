@@ -1,3 +1,5 @@
+import 'dart:math';
+
 enum Topics {
   towns,
   science,
@@ -6,8 +8,13 @@ enum Topics {
 }
 
 class WordsDB {
+
+  String getRandomWord(Topics topic) {
+    return topics[topic]!.first;
+  }
+
   var topics = {
-    'towns': [
+    Topics.towns: [
       'NEW YORK',
       'LONDON',
       'TOKYO',
@@ -102,7 +109,7 @@ class WordsDB {
       'YAKUTSK',
       'BARCELONA'
     ],
-    'science': [
+    Topics.science: [
       'ASTRONOMY',
       'BIOLOGY',
       'CHEMISTRY',
@@ -192,7 +199,7 @@ class WordsDB {
       'NUCLEAR PHYSICS',
       'EXPLOSIVES ENGINEERING'
     ],
-    'countries': [
+    Topics.countries: [
       'Afghanistan',
       'Albania',
       'Algeria',
@@ -379,7 +386,7 @@ class WordsDB {
       'United Arab Emirates',
       'United Kingdom'
     ],
-    'fauna': [
+    Topics.fauna: [
       'Aardvark',
       'Albatross',
       'Alligator',

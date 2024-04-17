@@ -5,11 +5,6 @@ import 'package:test/test.dart';
 import 'package:test_3/words_db.dart';
 
 void main() {
-  test('Hangman levels painting class', () {
-    Hangman gallows = Hangman();
-    expect(gallows, isNotNull);
-  });
-
   group('words database tests', () {
     test('Words DB class', () {
       WordsDB wordsDB = WordsDB();
@@ -26,8 +21,46 @@ void main() {
     });
   });
 
-  test('Interaction class', () {
-    Interaction inetraction = Interaction();
-    expect(inetraction, isNotNull);
+  group('interactions tests', () {
+    test('Interaction class', () {
+      Interaction inetraction = Interaction();
+      expect(inetraction, isNotNull);
+    });
+    test('print game name', () {
+      Interaction inetraction = Interaction();
+      expect(inetraction.printGameName(), 'Hangman');
+    });
+    test('get topic word', () {
+      Interaction inetraction = Interaction();
+      expect(inetraction.getWordFromTopic(Topics.towns), isA<String>());
+    });
+    test('print topics to choose from', () {
+      Interaction interaction = Interaction();
+      expect(interaction.printTopicsToChoose(), isA<String>());
+    });
+    test('method to get topic from button press', () {
+      Interaction interaction = Interaction();
+      expect(interaction.getTopicFromPress(), isA<Topics>());
+    });
+    test('method to get letter from button press', () {
+      Interaction interaction = Interaction();
+      expect(interaction.getLetterFromPress(), isA<Topics>());
+    });
+    test('check if letter is right', () {
+      Interaction interaction = Interaction();
+      expect(interaction.checkLetter(), isA<bool>());
+    })
+  });
+
+  group('hangman painting tests', () {
+    test('hangman levels painting class', () {
+      Hangman gallows = Hangman();
+      expect(gallows, isNotNull);
+    });
+
+    test('hangman painting method', () {
+      Hangman gallows = Hangman();
+      expect(gallows.paintHangLevel(2), 'level 2');
+    });
   });
 }
