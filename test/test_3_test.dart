@@ -28,28 +28,30 @@ void main() {
     });
     test('print game name', () {
       Interaction inetraction = Interaction();
-      expect(inetraction.printGameName(), 'Hangman');
+      expect(inetraction.getGameName(), 'The Hangman Game');
     });
     test('get topic word', () {
       Interaction inetraction = Interaction();
-      expect(inetraction.getWordFromTopic(Topics.towns), isA<String>());
+      String word = inetraction.getWordFromTopic(Topics.towns);
+      expect(WordsDB().topics[Topics.towns]!.contains(word), true);
     });
-    test('print topics to choose from', () {
+    test('get topics to choose from', () {
       Interaction interaction = Interaction();
-      expect(interaction.printTopicsToChoose(), isA<String>());
+      expect(interaction.getTopicsToChoose(), Topics.values.map((topic) => topic.toString().split('.').last).toList());
     });
     test('method to get topic from button press', () {
       Interaction interaction = Interaction();
-      expect(interaction.getTopicFromPress(), isA<Topics>());
+      expect(interaction.getTopicFromPress(), Topics.towns);
     });
     test('method to get letter from button press', () {
       Interaction interaction = Interaction();
-      expect(interaction.getLetterFromPress(), isA<Topics>());
+      expect(interaction.getLetterFromPress(), 'a'); //method implementation is changed due to tests
     });
     test('check if letter is right', () {
       Interaction interaction = Interaction();
-      expect(interaction.checkLetter(), isA<bool>());
-    })
+      interaction.wordToGuessLetters = ['w', 'o', 'r', 'd'];
+      expect(interaction.checkLetter('w'), true); //method implementation is changed due to tests
+    });
   });
 
   group('hangman painting tests', () {
