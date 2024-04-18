@@ -44,7 +44,7 @@ void main() {
     });
     test('get topic from button press', () {
       Interaction interaction = Interaction();
-      expect(interaction.getTopicFromPress(true), Topics.towns);
+      expect(interaction.setTopicFromPress(true), Topics.towns);
     });
     test('get letter from button press', () {
       Interaction interaction = Interaction();
@@ -113,6 +113,33 @@ void main() {
                                 #
           ############################
           #                          #''');
+    });
+  });
+
+  group('interface', () {
+    test('interface class', () {
+      Interface interface = Interface();
+      expect(interface, isNotNull);
+    });
+
+    test('print game name', () {
+      Interface interface = Interface();
+      expect(interface.printGameName, 'Hangman');
+    });
+
+    test('topic choode menu', () {
+      Interface interface = Interface();
+      expect(interface.startTopicMenu, 'Hangman');
+    });
+
+    test('game interface', () {
+      Interface interface = Interface();
+      expect(interface.startGame, 'Hangman');
+    });
+
+    test('game end', () {
+      Interface interface = Interface();
+      expect(interface.startGame, 'Oops, seems like your buddy is dead');
     });
   });
 }

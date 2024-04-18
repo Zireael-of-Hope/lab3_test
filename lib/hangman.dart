@@ -107,7 +107,7 @@ class Hangman {
   ];
   String paintHangLevel(int level) {
     if (level > levels.length) {
-      throw Exception('wtf man? are you dumb? there are only 8 levels');
+      throw Exception('wtf man? are you stupid? there are only 8 levels you dumb fuck');
     }
     return levels[level - 1];
   }

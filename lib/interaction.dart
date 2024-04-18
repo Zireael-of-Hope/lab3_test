@@ -1,9 +1,10 @@
 import 'package:test_3/words_db.dart';
 import 'package:test_3/funcs.dart';
-import 'dart:io';
+//import 'dart:io';
 
 class Interaction {
 
+  late Topics chosenTopic;
   late String wordToGuess;
   late List<String> wordToGuessLetters;
   late List<String> shownLetters;
@@ -24,7 +25,7 @@ class Interaction {
     return Topics.values.map((topic) => topic.toString().split('.').last).toList(); 
   }
 
-  Topics getTopicFromPress([bool isTesting = false]) {
+  Topics setTopicFromPress([bool isTesting = false]) {
     int? chosenNumber;
 
     do {
@@ -36,7 +37,9 @@ class Interaction {
 
     } while(chosenNumber > Topics.values.length || chosenNumber < 0);
 
-    return Topics.values[chosenNumber];
+    chosenTopic = Topics.values[chosenNumber];
+
+    return chosenTopic;
   }
 
   String getLetterFromPress([bool isTesting = false]) {
