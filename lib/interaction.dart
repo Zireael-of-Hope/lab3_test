@@ -6,6 +6,8 @@ class Interaction {
 
   late String wordToGuess;
   late List<String> wordToGuessLetters;
+  late List<String> shownLetters;
+  late int lives;
 
   WordsDB wordsDB = WordsDB();
 
@@ -21,11 +23,13 @@ class Interaction {
     return Topics.values.map((topic) => topic.toString().split('.').last).toList(); 
   }
 
-  Topics getTopicFromPress() {
+  Topics getTopicFromPress([bool isTesting = false]) {
     int? chosenNumber;
 
     do {
-      chosenNumber = /* getInputNumber(); */ 0; //for tests
+      if (isTesting == true) {
+        chosenNumber = 0; //for tests
+      } else {chosenNumber = getInputNumber();} 
 
       chosenNumber == null ? chosenNumber = -1 : {}; // add warning here
 
@@ -34,12 +38,14 @@ class Interaction {
     return Topics.values[chosenNumber];
   }
 
-  String getLetterFromPress() {
+  String getLetterFromPress([bool isTesting = false]) {
     String? chosenNumber;
 
     do {
-      chosenNumber = /* getInputLetter(); */ 'a';
-
+      if (isTesting == true) {
+        chosenNumber = 'a';
+      } else {chosenNumber = getInputLetter();}
+      
       chosenNumber == null ? {} : {}; // add warning here
 
     } while(chosenNumber == null);

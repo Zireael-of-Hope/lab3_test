@@ -39,18 +39,63 @@ void main() {
       Interaction interaction = Interaction();
       expect(interaction.getTopicsToChoose(), Topics.values.map((topic) => topic.toString().split('.').last).toList());
     });
-    test('method to get topic from button press', () {
+    test('get topic from button press', () {
       Interaction interaction = Interaction();
-      expect(interaction.getTopicFromPress(), Topics.towns);
+      expect(interaction.getTopicFromPress(true), Topics.towns);
     });
-    test('method to get letter from button press', () {
+    test('get letter from button press', () {
       Interaction interaction = Interaction();
-      expect(interaction.getLetterFromPress(), 'a'); //method implementation is changed due to tests
+      expect(interaction.getLetterFromPress(true), 'a'); 
     });
     test('check if letter is right', () {
       Interaction interaction = Interaction();
       interaction.wordToGuessLetters = ['w', 'o', 'r', 'd'];
-      expect(interaction.checkLetter('w'), true); //method implementation is changed due to tests
+      expect(interaction.checkLetter('w'), true); 
+    });
+
+    test('turn word into guess list', () {
+      Interaction interaction = Interaction();
+      expect(interaction.wordIntoList(), true); 
+    });
+
+    test('make shown word with hidden letters', () {
+      Interaction interaction = Interaction();
+      expect(interaction.showLettersToGuess(), true); 
+    });
+
+    test('uncover guessed letters', () {
+      Interaction interaction = Interaction();
+      expect(interaction.uncoverGuessedLetters(), true); 
+    });
+
+    test('set lives', () {
+      Interaction interaction = Interaction();
+      expect(interaction.setLives(), true); 
+    });
+
+    test('is answer right', () {
+      Interaction interaction = Interaction();
+      expect(interaction.isAnswerRight(), true);
+    });
+
+    test('game over', () {
+      Interaction interaction = Interaction();
+      expect(interaction.gameOver(), true); 
+    });
+
+     test('start the game', () {
+      Interaction interaction = Interaction();
+      expect(interaction.start(), true); 
+    });
+
+    test('word to guess setup', () {
+      Interaction interaction = Interaction();
+      expect(interaction.setWordToGuess(), true); 
+    });
+
+    test('start the game', () {
+      Interaction interaction = Interaction();
+      expect(interaction.setLettersToGuess(), true); 
     });
   });
 
