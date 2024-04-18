@@ -1,6 +1,5 @@
 import 'package:test_3/hangman.dart';
 import 'package:test_3/interaction.dart';
-import 'package:test_3/test_3.dart';
 import 'package:test/test.dart';
 import 'package:test_3/words_db.dart';
 
@@ -76,10 +75,11 @@ void main() {
 
     test('word to guess setup', () {
       Interaction interaction = Interaction();
-      expect(interaction.setWordToGuess('word'), ['word','word','w__d','wd']); 
-    }); 
-    
- /*    
+      expect(
+          interaction.setWordToGuess('word'), ['word', 'word', 'w__d', 'wd']);
+    });
+
+    /*    
     test('game over', () {
       Interaction interaction = Interaction();
       expect(interaction.gameOver(), true); 
@@ -99,7 +99,20 @@ void main() {
 
     test('hangman painting method', () {
       Hangman gallows = Hangman();
-      expect(gallows.paintHangLevel(2), 'level 2');
+      expect(gallows.paintHangLevel(8), 
+    '''                  ###############
+                  |             #
+                  |             #
+                  |             #
+                  |             #
+                  O             #
+                / | \\           #
+                  |             #
+                 / \\            #
+                                #
+                                #
+          ############################
+          #                          #''');
     });
   });
 }

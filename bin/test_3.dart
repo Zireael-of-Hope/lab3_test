@@ -1,5 +1,6 @@
-import 'package:test_3/test_3.dart' as test_3;
+import 'package:test_3/hangman.dart';
 
 void main(List<String> arguments) {
-  print('Hello world: ${test_3.calculate()}!');
+  Hangman hangman = Hangman();
+  print(hangman.paintHangLevel(7));
 }
