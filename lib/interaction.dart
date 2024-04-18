@@ -8,6 +8,7 @@ class Interaction {
   late List<String> wordToGuessLetters;
   late List<String> shownLetters;
   late int lives;
+  List<String> usedLetters = [];
 
   WordsDB wordsDB = WordsDB();
 
@@ -57,15 +58,11 @@ class Interaction {
     return wordToGuessLetters.contains(letter) ? true : false;
   }
 
-  List<String> wordIntoGuessList(String wordToGuess) {
-    return wordToGuess.split('').toList();
-  }
-
   String getLettersToGuess([bool isTesting = false]) {
     if (isTesting) {
       List<String> word = ['w', 'o', 'r', 'd'];
       return word.join(' ');
-    } else {return shownLetters.map((e) => e = '$e ').toString();}
+    } else {return shownLetters.join(' ');}
   }
 
   List<String> uncoverGuessedLetters(String letter) {
@@ -75,5 +72,24 @@ class Interaction {
       }
     }
     return shownLetters;
+  }
+
+  int setLives(int livesCount) {
+    lives = livesCount;
+    return lives;
+  }
+
+  List<String> setWordToGuess(String newWordToGuess) {
+    wordToGuess = newWordToGuess;
+    wordToGuessLetters = wordToGuess.split('').toList();
+
+    shownLetters = List.filled(wordToGuessLetters.length, '_');
+    shownLetters.first = wordToGuessLetters.first;
+    shownLetters.last = wordToGuessLetters.last;
+
+    usedLetters.add(shownLetters.first);
+    usedLetters.add(shownLetters.last);
+
+    return [wordToGuess, wordToGuessLetters.join(), shownLetters.join(), usedLetters.join()];
   }
 }

@@ -37,7 +37,11 @@ void main() {
     });
     test('get topics to choose from', () {
       Interaction interaction = Interaction();
-      expect(interaction.getTopicsToChoose(), Topics.values.map((topic) => topic.toString().split('.').last).toList());
+      expect(
+          interaction.getTopicsToChoose(),
+          Topics.values
+              .map((topic) => topic.toString().split('.').last)
+              .toList());
     });
     test('get topic from button press', () {
       Interaction interaction = Interaction();
@@ -45,42 +49,37 @@ void main() {
     });
     test('get letter from button press', () {
       Interaction interaction = Interaction();
-      expect(interaction.getLetterFromPress(true), 'a'); 
+      expect(interaction.getLetterFromPress(true), 'a');
     });
     test('check if letter is right', () {
       Interaction interaction = Interaction();
       interaction.wordToGuessLetters = ['w', 'o', 'r', 'd'];
-      expect(interaction.checkLetter('w'), true); 
-    });
-
-    test('turn word into guess list', () {
-      Interaction interaction = Interaction();
-      String word = 'word';
-      expect(interaction.wordIntoGuessList(word), ['w', 'o', 'r', 'd']); 
+      expect(interaction.checkLetter('w'), true);
     });
 
     test('get shown word with hidden letters', () {
       Interaction interaction = Interaction();
-      expect(interaction.getLettersToGuess(true), 'w o r d'); 
+      expect(interaction.getLettersToGuess(true), 'w o r d');
     });
 
     test('uncover guessed letters', () {
       Interaction interaction = Interaction();
       interaction.wordToGuessLetters = ['w', 'o', 'r', 'd'];
       interaction.shownLetters = ['w', '_', '_', 'd'];
-      expect(interaction.uncoverGuessedLetters('r'), ['w', '_', 'r', 'd']); 
+      expect(interaction.uncoverGuessedLetters('r'), ['w', '_', 'r', 'd']);
     });
-/* 
+
     test('set lives', () {
       Interaction interaction = Interaction();
-      expect(interaction.setLives(), true); 
+      expect(interaction.setLives(1), 1);
     });
 
-    test('is answer right', () {
+    test('word to guess setup', () {
       Interaction interaction = Interaction();
-      expect(interaction.isAnswerRight(), true);
-    });
-
+      expect(interaction.setWordToGuess('word'), ['word','word','w__d','wd']); 
+    }); 
+    
+ /*    
     test('game over', () {
       Interaction interaction = Interaction();
       expect(interaction.gameOver(), true); 
@@ -89,12 +88,7 @@ void main() {
      test('start the game', () {
       Interaction interaction = Interaction();
       expect(interaction.start(), true); 
-    });
-
-    test('word to guess setup', () {
-      Interaction interaction = Interaction();
-      expect(interaction.setWordToGuess(), true); 
-    }); */
+    });*/
   });
 
   group('hangman painting tests', () {
