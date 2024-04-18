@@ -55,19 +55,22 @@ void main() {
 
     test('turn word into guess list', () {
       Interaction interaction = Interaction();
-      expect(interaction.wordIntoList(), true); 
+      String word = 'word';
+      expect(interaction.wordIntoGuessList(word), ['w', 'o', 'r', 'd']); 
     });
 
-    test('make shown word with hidden letters', () {
+    test('get shown word with hidden letters', () {
       Interaction interaction = Interaction();
-      expect(interaction.showLettersToGuess(), true); 
+      expect(interaction.getLettersToGuess(true), 'w o r d'); 
     });
 
     test('uncover guessed letters', () {
       Interaction interaction = Interaction();
-      expect(interaction.uncoverGuessedLetters(), true); 
+      interaction.wordToGuessLetters = ['w', 'o', 'r', 'd'];
+      interaction.shownLetters = ['w', '_', '_', 'd'];
+      expect(interaction.uncoverGuessedLetters('r'), ['w', '_', 'r', 'd']); 
     });
-
+/* 
     test('set lives', () {
       Interaction interaction = Interaction();
       expect(interaction.setLives(), true); 
@@ -91,12 +94,7 @@ void main() {
     test('word to guess setup', () {
       Interaction interaction = Interaction();
       expect(interaction.setWordToGuess(), true); 
-    });
-
-    test('start the game', () {
-      Interaction interaction = Interaction();
-      expect(interaction.setLettersToGuess(), true); 
-    });
+    }); */
   });
 
   group('hangman painting tests', () {

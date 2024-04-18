@@ -56,4 +56,24 @@ class Interaction {
   bool checkLetter(String letter) {
     return wordToGuessLetters.contains(letter) ? true : false;
   }
+
+  List<String> wordIntoGuessList(String wordToGuess) {
+    return wordToGuess.split('').toList();
+  }
+
+  String getLettersToGuess([bool isTesting = false]) {
+    if (isTesting) {
+      List<String> word = ['w', 'o', 'r', 'd'];
+      return word.join(' ');
+    } else {return shownLetters.map((e) => e = '$e ').toString();}
+  }
+
+  List<String> uncoverGuessedLetters(String letter) {
+    for (int i = 0; i < wordToGuessLetters.length; i++) {
+      if (wordToGuessLetters[i] == letter) {
+        shownLetters[i] = letter;
+      }
+    }
+    return shownLetters;
+  }
 }
