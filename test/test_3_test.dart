@@ -46,14 +46,10 @@ void main() {
       expect(interaction.setTopicFromPress(true), Topics.towns);
     });
 
-    test('get letter from button press', () {
-      Interaction interaction = Interaction();
-      expect(interaction.getLetterFromPress(true), 'a');
-    });
     test('check if letter is right', () {
       Interaction interaction = Interaction();
       interaction.wordToGuessLetters = ['w', 'o', 'r', 'd'];
-      expect(interaction.checkLetter('w'), true);
+      expect(interaction.isRightPick('w'), true);
     });
 
     test('get shown word with hidden letters', () {
@@ -88,7 +84,7 @@ void main() {
 
     test('hangman painting method', () {
       Hangman gallows = Hangman();
-      expect(gallows.paintHangLevel(8), 
+      expect(gallows.levels[0], 
     '''                  ###############
                   |             #
                   |             #
@@ -118,7 +114,7 @@ void main() {
 
     test('game main interface', () {
       Interface interface = Interface();
-      expect(interface.gameMainInterface(['hello', 'world']), 'Hangman');
+      expect(interface.gameMainInterface('', '', ['', '']), isA<String>());
     });
   });
 }

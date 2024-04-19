@@ -10,11 +10,12 @@ int? getInputNumber(int from, int upTo) {
       }
     } else {return null;}
   } else {return null;}
+  return null;
 }
 
 String? getInputLetter() {
   String? letter = stdin.readLineSync();
-  if (letter != null && letter.length == 1 && letter.contains(RegExp(r'[a-zA-Z]'))) {
+  if (letter != null && letter.length == 1 && letter.contains(RegExp(r'[a-zA-Z0]'))) {
     return letter;
   } else {return null;}
 }

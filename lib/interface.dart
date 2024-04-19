@@ -1,4 +1,3 @@
-import 'package:test_3/interaction.dart';
 
 class Interface {
   String topicMenu(List<String> topics) {
@@ -9,5 +8,13 @@ class Interface {
     menu += '\nType number of the topic and press Enter of the topic...';
     return menu;
   }
-  
+
+  String gameMainInterface(String hang, String wordToGuessHidden, List<String> usedLetters, [bool isLostOrWin = false]) {
+    String mainInterface = 'Hangman (press 0 to end game)';
+    mainInterface += '\n$hang';
+    mainInterface += '\nword to guess: ${wordToGuessHidden.toUpperCase()}';
+    mainInterface += '\nused letters: ${usedLetters.join(' ').toUpperCase()}';
+    isLostOrWin == false ? mainInterface += '\nType letter and press Enter...' : {};
+    return mainInterface;
+  }
 }

@@ -1,4 +1,6 @@
 
+import 'dart:math';
+
 enum Topics {
   towns,
   science,
@@ -15,7 +17,8 @@ class WordsDB {
   }
 
   String getRandomWord(Topics topic) {
-    return topics[topic]!.first;
+    Random random = Random();
+    return topics[topic]![random.nextInt(topics[topic]!.length)];
   }
 
   var topics = {

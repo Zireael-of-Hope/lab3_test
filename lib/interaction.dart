@@ -17,6 +17,10 @@ class Interaction {
     return wordsDB.gameName;
   }
 
+  void clearUnclearable() {
+    usedLetters = [];
+  }
+
   List<String> getTopicsToChoose() {
     return Topics.values.map((topic) => topic.toString().split('.').last).toList(); 
   }
@@ -33,23 +37,17 @@ class Interaction {
     return chosenTopic;
   }
 
-  String getLetterFromPress([bool isTesting = false]) {
-    String? chosenNumber;
-
-    do {
-      if (isTesting == true) {
-        chosenNumber = 'a';
-      } else {chosenNumber = getInputLetter();}
-      
-      chosenNumber == null ? {} : {}; // add warning here
-
-    } while(chosenNumber == null);
-
-    return chosenNumber;
+  bool isRightPick(String letter) {
+    return wordToGuessLetters.contains(letter);
   }
 
-  bool checkLetter(String letter) {
-    return wordToGuessLetters.contains(letter) ? true : false;
+  List<String> addUsedLetter(String letter) {
+    usedLetters.add(letter);
+    return usedLetters;
+  }
+
+  bool isLetterAlreadyUsed(String letter) {
+    return usedLetters.contains(letter);
   }
 
   String getLettersToGuess([bool isTesting = false]) {
@@ -77,12 +75,27 @@ class Interaction {
     if (!istesting) {
       wordToGuess = wordsDB.getRandomWord(topic);
     } else {wordToGuess = 'word';}
+
     wordToGuessLetters = wordToGuess.split('').toList();
+    wordToGuessLetters = wordToGuessLetters.map((e) => e.toLowerCase()).toList();
+
     shownLetters = List.filled(wordToGuessLetters.length, '_');
     shownLetters.first = wordToGuessLetters.first;
     shownLetters.last = wordToGuessLetters.last;
+
+    for (int i = 0; i < wordToGuessLetters.length; i++) {
+      if (wordToGuessLetters[i] == ' ') {
+        shownLetters[i] = ' ';
+      }
+    }
+
     usedLetters.add(shownLetters.first);
     usedLetters.add(shownLetters.last);
+
     return [wordToGuess, wordToGuessLetters.join(), shownLetters.join(), usedLetters.join()];
+  }
+
+  bool isWordGuessed() {
+    return !shownLetters.contains('_');
   }
 }
