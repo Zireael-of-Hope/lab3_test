@@ -43,7 +43,12 @@ void main() {
           interaction.addUsedLetter(inputLeter);
         }
       } else {
-        interaction.setLives(interaction.lives - 1);
+        if (!interaction.isLetterAlreadyUsed(inputLeter)) {
+          interaction.addUsedLetter(inputLeter);
+          interaction.setLives(interaction.lives - 1);
+        } else {
+          interaction.setLives(interaction.lives - 1);
+        }
       }
     } while (interaction.lives != 0 &&
         !interaction.isWordGuessed() &&
