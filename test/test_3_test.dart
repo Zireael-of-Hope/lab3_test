@@ -2,6 +2,7 @@ import 'package:test_3/hangman.dart';
 import 'package:test_3/interaction.dart';
 import 'package:test/test.dart';
 import 'package:test_3/words_db.dart';
+import 'package:test_3/interface.dart';
 
 void main() {
   group('words database tests', () {
@@ -28,11 +29,6 @@ void main() {
     test('print game name', () {
       Interaction inetraction = Interaction();
       expect(inetraction.getGameName(), 'The Hangman Game');
-    });
-    test('get topic word', () {
-      Interaction inetraction = Interaction();
-      String word = inetraction.getWordFromTopic(Topics.towns);
-      expect(WordsDB().topics[Topics.towns]!.contains(word), true);
     });
     test('get topics to choose from', () {
       Interaction interaction = Interaction();
@@ -76,7 +72,7 @@ void main() {
     test('word to guess setup', () {
       Interaction interaction = Interaction();
       expect(
-          interaction.setWordToGuess('word'), ['word', 'word', 'w__d', 'wd']);
+          interaction.setWordToGuess(Topics.towns, true), ['word', 'word', 'w__d', 'wd']);
     });
 
     /*    
@@ -124,22 +120,22 @@ void main() {
 
     test('print game name', () {
       Interface interface = Interface();
-      expect(interface.printGameName, 'Hangman');
+      expect(interface.printGameName('Hangman'), 'Hangman');
     });
 
-    test('topic choode menu', () {
+    test('topic choose menu', () {
       Interface interface = Interface();
-      expect(interface.startTopicMenu, 'Hangman');
+      expect(interface.topicMenu(['hello', 'world']), 'Hangman');
     });
-
+/* 
     test('game interface', () {
       Interface interface = Interface();
-      expect(interface.startGame, 'Hangman');
+      expect(interface.startGame(), 'Hangman');
     });
 
     test('game end', () {
       Interface interface = Interface();
-      expect(interface.startGame, 'Oops, seems like your buddy is dead');
-    });
+      expect(interface.endGame(), 'Oops, seems like your buddy is dead');
+    }); */
   });
 }

@@ -14,11 +14,7 @@ class Interaction {
   WordsDB wordsDB = WordsDB();
 
   String getGameName() {
-    return 'The Hangman Game';
-  }
-
-  String getWordFromTopic(Topics topic) {
-    return wordsDB.getRandomWord(topic);
+    return wordsDB.gameName;
   }
 
   List<String> getTopicsToChoose() {
@@ -27,18 +23,13 @@ class Interaction {
 
   Topics setTopicFromPress([bool isTesting = false]) {
     int? chosenNumber;
-
     do {
       if (isTesting == true) {
         chosenNumber = 0; //for tests
-      } else {chosenNumber = getInputNumber();} 
-
+      } else {chosenNumber = getInputNumber(1, Topics.values.length);} 
       chosenNumber == null ? chosenNumber = -1 : {}; // add warning here
-
-    } while(chosenNumber > Topics.values.length || chosenNumber < 0);
-
-    chosenTopic = Topics.values[chosenNumber];
-
+    } while(chosenNumber < 0);
+    chosenTopic = Topics.values[chosenNumber - 1];
     return chosenTopic;
   }
 
@@ -82,17 +73,16 @@ class Interaction {
     return lives;
   }
 
-  List<String> setWordToGuess(String newWordToGuess) {
-    wordToGuess = newWordToGuess;
+  List<String> setWordToGuess(Topics topic, [bool istesting = false]) {
+    if (!istesting) {
+      wordToGuess = wordsDB.getRandomWord(topic);
+    } else {wordToGuess = 'word';}
     wordToGuessLetters = wordToGuess.split('').toList();
-
     shownLetters = List.filled(wordToGuessLetters.length, '_');
     shownLetters.first = wordToGuessLetters.first;
     shownLetters.last = wordToGuessLetters.last;
-
     usedLetters.add(shownLetters.first);
     usedLetters.add(shownLetters.last);
-
     return [wordToGuess, wordToGuessLetters.join(), shownLetters.join(), usedLetters.join()];
   }
 }

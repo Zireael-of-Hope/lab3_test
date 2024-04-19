@@ -8,6 +8,12 @@ enum Topics {
 
 class WordsDB {
 
+  String gameName = 'Hangman';
+
+  int getTopicsNumber() {
+    return Topics.values.length;
+  }
+
   String getRandomWord(Topics topic) {
     return topics[topic]!.first;
   }
