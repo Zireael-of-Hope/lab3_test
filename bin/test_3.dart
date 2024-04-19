@@ -16,11 +16,16 @@ void main() {
 
   do {
     isStillGoing = false;
-    print('${interface.printGameName(interaction.getGameName())}\n');
+    print('${interaction.getGameName()}\n');
     stdout.write(interface.topicMenu(interaction.getTopicsToChoose()));
     interaction.setTopicFromPress();
 
     interaction.setWordToGuess(interaction.chosenTopic);
+    interaction.setLives(8);
+    do {
+      
+
+    } while (interaction.lives != 0);
   } while(isStillGoing);
 }
  

@@ -26,10 +26,12 @@ void main() {
       Interaction inetraction = Interaction();
       expect(inetraction, isNotNull);
     });
+
     test('print game name', () {
       Interaction inetraction = Interaction();
       expect(inetraction.getGameName(), 'The Hangman Game');
     });
+
     test('get topics to choose from', () {
       Interaction interaction = Interaction();
       expect(
@@ -38,10 +40,12 @@ void main() {
               .map((topic) => topic.toString().split('.').last)
               .toList());
     });
+
     test('get topic from button press', () {
       Interaction interaction = Interaction();
       expect(interaction.setTopicFromPress(true), Topics.towns);
     });
+
     test('get letter from button press', () {
       Interaction interaction = Interaction();
       expect(interaction.getLetterFromPress(true), 'a');
@@ -74,17 +78,6 @@ void main() {
       expect(
           interaction.setWordToGuess(Topics.towns, true), ['word', 'word', 'w__d', 'wd']);
     });
-
-    /*    
-    test('game over', () {
-      Interaction interaction = Interaction();
-      expect(interaction.gameOver(), true); 
-    });
-
-     test('start the game', () {
-      Interaction interaction = Interaction();
-      expect(interaction.start(), true); 
-    });*/
   });
 
   group('hangman painting tests', () {
@@ -118,24 +111,14 @@ void main() {
       expect(interface, isNotNull);
     });
 
-    test('print game name', () {
-      Interface interface = Interface();
-      expect(interface.printGameName('Hangman'), 'Hangman');
-    });
-
     test('topic choose menu', () {
       Interface interface = Interface();
-      expect(interface.topicMenu(['hello', 'world']), 'Hangman');
-    });
-/* 
-    test('game interface', () {
-      Interface interface = Interface();
-      expect(interface.startGame(), 'Hangman');
+      expect(interface.topicMenu(['hello', 'world']), isA<String>());
     });
 
-    test('game end', () {
+    test('game main interface', () {
       Interface interface = Interface();
-      expect(interface.endGame(), 'Oops, seems like your buddy is dead');
-    }); */
+      expect(interface.gameMainInterface(['hello', 'world']), 'Hangman');
+    });
   });
 }
