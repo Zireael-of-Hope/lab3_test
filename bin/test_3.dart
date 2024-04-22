@@ -4,7 +4,7 @@ import 'package:test_3/hangman.dart';
 import 'package:test_3/interaction.dart';
 import 'package:test_3/interface.dart';
 
-void main() {
+void main() async {
   final Hangman hangman = Hangman();
   final Interface interface = Interface();
   final Interaction interaction = Interaction();
@@ -24,6 +24,8 @@ void main() {
     interaction.setWordToGuess(interaction.chosenTopic);
     interaction.setLives(hangman.levels.length - 1);
     do {
+      hangman.addMillionVarsToME();
+
       print(interface.gameMainInterface(hangman.levels[interaction.lives],
           interaction.getLettersToGuess(), interaction.usedLetters));
 

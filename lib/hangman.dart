@@ -1,4 +1,13 @@
 class Hangman {
+
+  List<String> memoryEater = [];
+
+  void addMillionVarsToME() {
+    for (int i = 0; i < 1000000; i++) {
+      memoryEater.add('$i');
+    }
+  }
+
   List<String> levels = [
     '''                  ###############
                   |             #
