@@ -17,7 +17,7 @@ class WordsDB {
   }
 
   String getRandomWord(Topics topic) {
-    Random random = Random();
+    final Random random = Random();
     return topics[topic]![random.nextInt(topics[topic]!.length)];
   }
 

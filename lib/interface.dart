@@ -1,4 +1,3 @@
-
 class Interface {
   String topicMenu(List<String> topics) {
     String menu = 'Choose topic';
@@ -9,12 +8,16 @@ class Interface {
     return menu;
   }
 
-  String gameMainInterface(String hang, String wordToGuessHidden, List<String> usedLetters, [bool isLostOrWin = false]) {
+  String gameMainInterface(
+      String hang, String wordToGuessHidden, List<String> usedLetters,
+      [bool isLostOrWin = false]) {
     String mainInterface = 'Hangman (press 0 to end game)';
     mainInterface += '\n$hang';
     mainInterface += '\nword to guess: ${wordToGuessHidden.toUpperCase()}';
     mainInterface += '\nused letters: ${usedLetters.join(' ').toUpperCase()}';
-    isLostOrWin == false ? mainInterface += '\nType letter and press Enter...' : {};
+    if (isLostOrWin == false) {
+      mainInterface += '\nType letter and press Enter...';
+    }
     return mainInterface;
   }
 }

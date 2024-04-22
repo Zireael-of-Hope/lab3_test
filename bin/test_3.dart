@@ -1,13 +1,13 @@
+import 'dart:io';
 import 'package:test_3/funcs.dart';
 import 'package:test_3/hangman.dart';
 import 'package:test_3/interaction.dart';
 import 'package:test_3/interface.dart';
-import 'dart:io';
 
 void main() {
-  Hangman hangman = Hangman();
-  Interface interface = Interface();
-  Interaction interaction = Interaction();
+  final Hangman hangman = Hangman();
+  final Interface interface = Interface();
+  final Interaction interaction = Interaction();
   String? inputLeter;
   late bool isStillGoing;
   late bool isWrong;
